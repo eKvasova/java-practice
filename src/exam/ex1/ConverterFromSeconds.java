@@ -3,6 +3,7 @@ package exam.ex1;
 public class ConverterFromSeconds {
 
     public static void main(String[] args) {
+
         System.out.println(getWeeksFromSeconds(2258521L));
     }
 
