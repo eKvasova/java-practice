@@ -6,14 +6,15 @@ public class LuckyTickets {
 
         int maxRange = 999999;
         int count = 0;
-        for (int i = 1001; i <= maxRange; i++) {
-            String numberFormatted = String.format("%06d",i);
-            int number1 = Integer.parseInt(String.valueOf(numberFormatted.charAt(0)));
-            int number2 = Integer.parseInt(String.valueOf(numberFormatted.charAt(1)));
-            int number3 = Integer.parseInt(String.valueOf(numberFormatted.charAt(2)));
-            int number4 = Integer.parseInt(String.valueOf(numberFormatted.charAt(3)));
-            int number5 = Integer.parseInt(String.valueOf(numberFormatted.charAt(4)));
-            int number6 = Integer.parseInt(String.valueOf(numberFormatted.charAt(5)));
+
+        for (int i = 1; i <= maxRange; i++) {
+
+            int number1 = i / 100000;
+            int number2 = (i / 10000) % 10;
+            int number3 = (i / 1000) % 10;
+            int number4 = (i / 100) % 10;
+            int number5 = (i / 10) % 10;
+            int number6 = i % 10 ;
 
             if ((number1 + number2 + number3) == (number4 + number5 + number6)) {
                 count ++;
