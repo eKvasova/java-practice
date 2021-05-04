@@ -9,22 +9,20 @@ public class ArmyUnluckyNumbers {
 
     public static void getUnluckyNumbersCount (int range) {
 
-        String[] numberArray = new String[range];
-
-        for (int i = 0; i < numberArray.length; i++) {
-            numberArray[i] = String.valueOf(i);
-        }
-
         int count = 0;
-        for (int i = 1; i <numberArray.length; i++) {
-            boolean four = numberArray[i].contains("4");
-            boolean thirteen = numberArray[i].contains("13");
 
-            if (four || thirteen) {
-                count ++;
+        for (int i = 1; i < range; i++) {
+
+            int d = i;
+            while (d > 0) {
+                if ((d % 10 == 4) || (d % 100 == 13)) {
+                    count++;
+                    break;
+                }
+                d /= 10;
             }
         }
-        System.out.println(count + " car numbers should be removed.");
+        System.out.println(count + " numbers should be removed.");
     }
 }
 
