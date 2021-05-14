@@ -6,7 +6,7 @@ public class PrimeNumberCheck {
 
     private static void primeNumberChecker() {
         Scanner scanner = new Scanner(System.in);
-        String message = "Введите число от 2 до 100";
+        String message = "Введите число больше 2";
         System.out.println(message);
         int number = scanner.nextInt();
         isPrimeNumber(number);
@@ -14,24 +14,27 @@ public class PrimeNumberCheck {
 
     private static void isPrimeNumber(int number) {
 
-        if ((number < 2) || (number > 100)){
+        boolean isPrime = true;
+
+        if (number < 2){
            primeNumberChecker();
         } else if (number == 2) {
             System.out.println("Ваше число " + number + " является простым");
-        } else if (number % 2 == 0) {
-            System.out.println("Ваше число " + number + " является составным");
         } else {
-            for (int i = 3; i <= (int) Math.sqrt(number); i += 2) {
+            for (int i = 2; i <= (int) Math.sqrt(number); i++) {
                 if (number % i == 0) {
+                    isPrime = false;
                     System.out.println("Ваше число " + number + " является составным");
+                    break;
                 }
             }
+        }
+        if (isPrime) {
             System.out.println("Ваше число " + number + " является простым");
         }
     }
 
     public static void main(String[] args) {
-
         primeNumberChecker();
     }
 }
