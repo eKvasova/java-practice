@@ -6,7 +6,7 @@ public class PrimeNumberCheck {
 
     private static void primeNumberChecker() {
         Scanner scanner = new Scanner(System.in);
-        String message = "Введите число больше 2";
+        String message = "Введите число от 2";
         System.out.println(message);
         int number = scanner.nextInt();
         isPrimeNumber(number);
