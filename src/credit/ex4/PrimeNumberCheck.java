@@ -15,7 +15,6 @@ public class PrimeNumberCheck {
     private static void isPrimeNumber(int number) {
 
         boolean isPrime = true;
-
         if (number < 2){
            primeNumberChecker();
         } else if (number == 2) {
