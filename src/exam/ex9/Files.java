@@ -1,11 +1,14 @@
 package exam.ex9;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+import static java.nio.file.Files.newBufferedReader;
 
 public class Files {
 
@@ -43,16 +46,18 @@ public class Files {
 
         }
 
-        try (BufferedReader br1 = new BufferedReader(new FileReader(".\\src\\exam\\ex9\\in1.txt"))) {
+        try (BufferedReader bf1 =
+                     newBufferedReader(Paths.get(".\\src\\exam\\ex9\\in1.txt"))) {
             String line1;
-            while ((line1 = br1.readLine()) != null) {
+            while((line1 = bf1.readLine())!= null) {
                 list.add(line1);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
-        try (BufferedReader br2 = new BufferedReader(new FileReader(".\\src\\exam\\ex9\\in2.txt"))) {
+
+        try (BufferedReader br2 = newBufferedReader(Paths.get(".\\src\\exam\\ex9\\in2.txt"))) {
             String line2;
             while ((line2 = br2.readLine()) != null) {
                 list.add(line2);
@@ -66,10 +71,14 @@ public class Files {
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
 
-        FileWriter out = new FileWriter(".\\src\\exam\\ex9\\out.txt");
+        File file3 = new File(".\\src\\exam\\ex9\\out.txt");
+
+        try (FileWriter out = new FileWriter(file3)) {
             for (Integer element : sortedList) {
                 out.write(element + System.lineSeparator());
             }
-        out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
